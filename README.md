@@ -15,37 +15,34 @@ Things you may want to cover:
 ## Users_テーブル
 |column|type|options|
 |------|----|-------|
-|user_id|integer|null: false|
-|user-name|string|null: false, unique: true|
+|name|string|null: false, unique: true index: ture|
 |mail|string|null: false, unique: true|
-|pass|string|null: false,|
+|pass|string|null: false|
 
 ### Associationm
+-has_many: groups,thourgh: :chats
 -has_many: groups
--has_many: chats
 
 
 ## Group_テーブル
 |column|type|options|
 |------|----|-------|
-|group_id|integer|null: false|
-|group_name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|user_name|string|null: false, foreign_key: true, index|
+|name|string|null: false|
+|user|reference|null: false, foreign_key: true|
+
 
 ### Associationm
-- belongs_to: user
+-has_many: users,thourgh: :chats
 - has_many: chats
 
 
 ## Chat_テーブル
 |column|type|options|
 |------|----|-------|
-|group_ID|integer|null: false, foreign_key: true|
-|user_ID|integer|null: false, foreign_key: true|
-|user_name|string|null: false, foreign_key: true|
+|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
 |text|text|t.text|
-|image|stri|string||
+|image|string|text|
 
 ### Associationm
 - belongs_to: user
