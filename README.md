@@ -20,7 +20,7 @@ Things you may want to cover:
 |pass|string|null: false|
 
 ### Associationm
--has_many: groups,thourgh: :chats
+-has_many: groups,thourgh: :user_group
 -has_many: groups
 
 
@@ -32,7 +32,7 @@ Things you may want to cover:
 
 
 ### Associationm
--has_many: users,thourgh: :chats
+-has_many: users,thourgh: :user_group
 - has_many: chats
 
 
@@ -43,6 +43,16 @@ Things you may want to cover:
 |user_id|reference|null: false, foreign_key: true|
 |text|text|t.text|
 |image|string|text|
+
+### Associationm
+- belongs_to: user
+- belongs_to :group
+
+### user_group_テーブル
+|column|type|options|
+|------|----|-------|
+|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
 
 ### Associationm
 - belongs_to: user
