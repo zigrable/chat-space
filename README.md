@@ -20,20 +20,22 @@ Things you may want to cover:
 |pass|string|null: false|
 
 ### Associationm
--has_many: groups,thourgh: :user_group
--has_many: groups
+- has_many: groups,thourgh: :user_group
+- has_many: groups
+- has_many: user_group
 
 
 ## Group_テーブル
 |column|type|options|
 |------|----|-------|
 |name|string|null: false|
-|user|reference|null: false, foreign_key: true|
+
 
 
 ### Associationm
--has_many: users,thourgh: :user_group
+- has_many: users,thourgh: :user_group
 - has_many: chats
+- has_many: group
 
 
 ## Chat_テーブル
