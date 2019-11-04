@@ -12,6 +12,53 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+## Users_テーブル
+|column|type|options|
+|------|----|-------|
+|name|string|null: false, unique: true index: ture|
+|mail|string|null: false, unique: true|
+|pass|string|null: false|
+
+### Associationm
+- has_many: groups,thourgh: :user_group
+- has_many: groups
+- has_many: user_group
+
+
+## Group_テーブル
+|column|type|options|
+|------|----|-------|
+|name|string|null: false|
+
+
+
+### Associationm
+- has_many: users,thourgh: :user_group
+- has_many: chats
+- has_many: group
+
+
+## Chat_テーブル
+|column|type|options|
+|------|----|-------|
+|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
+|text|text|t.text|
+|image|string|text|
+
+### Associationm
+- belongs_to: user
+- belongs_to :group
+
+### user_group_テーブル
+|column|type|options|
+|------|----|-------|
+|group_id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
+
+### Associationm
+- belongs_to: user
+- belongs_to :group
 
 * Database initialization
 
