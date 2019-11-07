@@ -1,0 +1,17 @@
+.chat
+  .chat__side
+    .chat__side--top
+      %h1 text-user
+      .chat__side--icon
+        =link_to new_group_path, class:"chat__side--icon" do
+          =fa_icon 'edit'
+        =link_to edit_user_path(current_user),class:"chat__side--icon" do
+          =fa_icon 'cog'
+    .chat__side--bottom
+      - current_user.groups.each do |group|
+        .group
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__message
+              = group.show_last_message

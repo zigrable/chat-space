@@ -1,40 +1,32 @@
 .header
-  グループを作成しました
 .div
   .wrapper
-    .chat
-      .chat__side
-        .chat__side--top
-          %h1 text-user
-          .chat__side--icon
-            =link_to "/", class:"chat__side--icon" do
-              =fa_icon 'edit'
-            =link_to "/", class:"chat__side--icon" do
-              =fa_icon 'cog'
-        .chat__side--bottom
-          %h2 test
-          %h3 さようなら
-          %h2 sample-group
-          %h3 hello!
-          %h2 example
-          %h3 まだメッセージがありません
+    = render "layouts/template/side_bar"
+
     .contents
       .contents__title
         .--edit
-        =link_to "/", class:"btn" do
+        =link_to edit_group_path(current_user), class:"btn" do
           %p.edit Edit
         .__name
-          %p.name title
+          %p.name
+            = @group.name
+
         .--menber
-          %p.menber menber
+          %p.menber 
+            menber:
+            - @group.users.each do |user|
+              = user.name
       .contents__text
-        %p.text-name test-user a
-        %p.text こんにちは！
-        %p.text-name test-user b
-        %p.text さようなら！
+        = render @messages
+
       .contents__form
-        %input.message{type:"text", size: "80"}
-        %label.image
-          =fa_icon 'image'
-          %input{type:"file", name:"datafile", id:"filesend"}
-        %input.submit_button{type:"submit", name:"submit" ,value:"Send"}
+
+
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
