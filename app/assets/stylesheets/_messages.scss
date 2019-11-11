@@ -45,6 +45,7 @@
     height: calc(100vh - 236px);
     background-color: #fafafa;
     width: calc(100vw - 300px);
+    overflow: auto;
   }
   &__form{
     height: 90px;
@@ -54,7 +55,7 @@
      .form__message{
       margin: 20px 0 0 40px;
       padding: 0 10px 0;
-      width: 900px;
+      width: 920px;
       height: 50px;
       border: 0;
     }
