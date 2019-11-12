@@ -1,7 +1,7 @@
 .chat
   .chat__side
     .chat__side--top
-      %h1 text-user
+      %h1= "#{current_user.name}"
       .chat__side--icon
         =link_to new_group_path, class:"chat__side--icon" do
           =fa_icon 'edit'
